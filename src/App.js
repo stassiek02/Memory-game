@@ -19,8 +19,7 @@ class App extends React.Component{
     this.start();
   }
   start(){
-    //function which duplicate and finitialize array of frameworks
-    /// wypierdala błedy jak sie szybko klika hujowo
+   
 
     let finitializedFrameworks=[],randomizedFrameworks = [];
     randomizedFrameworks = this.state.frameworks.concat(this.state.frameworks);
@@ -41,71 +40,69 @@ class App extends React.Component{
   }
 
   handleClick(name,index){
+    //check if array has already 2 items
     if(this.state.openedFrameworks.length === 2){
       setTimeout(()=>{
-        this.check();
+        this.check(this.state.openedFrameworks,this.state.finitializedFrameworks);
       },750)
     }else{
 
     let finitializedFrameworks = this.state.finitializedFrameworks;
     let openedFrameworks = this.state.openedFrameworks;
-    finitializedFrameworks[index].close=false;
-    openedFrameworks.push(finitializedFrameworks[index]);
-    
-    this.setState({
-      openedFrameworks:openedFrameworks,
-      finitializedFrameworks:finitializedFrameworks,
-     
-   })
-   console.log(openedFrameworks);
 
-    if(this.state.openedFrameworks.length === 2){
+    //if item is already open/matched openin wont work
+    if(finitializedFrameworks[index].close){
+      finitializedFrameworks[index].close=false;
+      openedFrameworks.push(finitializedFrameworks[index]);
+      
+      this.setState({
+        openedFrameworks:openedFrameworks,
+        finitializedFrameworks:finitializedFrameworks,
+       
+     })
+
+     if(this.state.openedFrameworks.length === 2){
       setTimeout(()=>{
-        this.check();
+        this.check(openedFrameworks,finitializedFrameworks);
       },750)
       
     }
+
+    }
+    
+
+    
   
   }
   } 
-  //bug gdy openstate sie zeruje i sie kliknie kolejny raz
-   
-  
-  check(){
-      
-    let openedFrameworks  = this.state.openedFrameworks;
-    let finitializedFrameworks = this.state.finitializedFrameworks;
-    console.log(openedFrameworks);
-      if((this.state.openedFrameworks[0].name === this.state.openedFrameworks[1].name) && (this.state.openedFrameworks[0].index != this.state.openedFrameworks[1].index)){
-       
-        //let openedFrameworks = [] = this.state.openedFrameworks;
-
-        setTimeout(()=>{
-        finitializedFrameworks[this.state.openedFrameworks[0].index].complete=true;
-        finitializedFrameworks[this.state.openedFrameworks[1].index].complete=true;
-        console.log(openedFrameworks);
-        this.setState({
-          openedFrameworks:[],
-          finitializedFrameworks:finitializedFrameworks,
-        })
-        console.log(openedFrameworks);
-      },750)
-        
-      
-      console.log(openedFrameworks);
-    }else{
-     // setTimeout(()=>{
-        finitializedFrameworks[this.state.openedFrameworks[0].index].close=true;
-        finitializedFrameworks[this.state.openedFrameworks[1].index].close=true;
-        
-        this.setState({
-          finitializedFrameworks:finitializedFrameworks,
-          openedFrameworks:[],
+ 
+  check(opened,finitialized){
+      //check if opened array have excatly 2 items
+      if(opened.length === 2){
+        //check if items have the same name but diffrent index
+        if((opened[0].name == opened[1].name) && (opened[0].index !== opened[1].index )){
+            
+            finitialized[opened[0].index].complete = true;
+            finitialized[opened[1].index].complete = true;
+          this.setState({
+            openedFrameworks:[],
+            finitializedFrameworks:finitialized,
+            
+          })
           
-        })
-    //  },750)
-    }
-    
+        }else{
+          finitialized[opened[0].index].close = true;
+          finitialized[opened[1].index].close = true;
+
+          this.setState({
+            openedFrameworks:[],
+            finitializedFrameworks:finitialized,
+            
+          })
+        }
+
+      }
+
   }
   
   
@@ -115,7 +112,7 @@ class App extends React.Component{
       var currentIndex = array.length, temporaryValue, randomValue;
       
 
-      while (currentIndex){// zoba czy działa fine
+      while (currentIndex){
         randomValue=Math.floor(Math.random() * currentIndex--);
 
         temporaryValue = array[currentIndex];
@@ -129,13 +126,16 @@ class App extends React.Component{
 
 
     render(){
-     // console.log(this.state.finitializedFrameworks.[name])
+
       const  finitializedFrameworks = this.state.finitializedFrameworks;
       return(
         <div className='wrapper'>
          { finitializedFrameworks.map((framework,index)=>{
            return(
-              <Card framework={framework.name} onClick={()=>this.handleClick(framework.name,index)} complete={framework.complete} close={framework.close}/>
+              <Card framework={framework.name}
+               onClick={()=>this.handleClick(framework.name,index)}
+                complete={framework.complete} 
+                close={framework.close}/>
            )
          })
            
