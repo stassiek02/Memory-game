@@ -15,7 +15,7 @@ class App extends React.Component{
     }
     
   }
-  componentDidMount(){
+  componentWillMount(){
     this.start();
   }
   start(){
@@ -130,6 +130,7 @@ class App extends React.Component{
       const  finitializedFrameworks = this.state.finitializedFrameworks;
       return(
         <div className='wrapper'>
+          
          { finitializedFrameworks.map((framework,index)=>{
            return(
               <Card framework={framework.name}

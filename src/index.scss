@@ -21,7 +21,7 @@ code {
   
 }
 .card{
-  background: #EDE7F6;
+ // background: #EDE7F6;
   border-radius: 3px;
   height: 200px;
   position: relative;
@@ -32,6 +32,7 @@ code {
   
 
   .front{
+    background: #ffbe76;
     position: absolute;
     top: 0;
     left: 0;
@@ -41,25 +42,25 @@ code {
     font-size: 50px;
     line-height: 12px;
     cursor: pointer;
-    color: darken(#f4f5f7,20%);
+    color: #535c68;
     display:flex;
     align-items: center;
     justify-content: center;
-    
+    transition: 0.8s all;
 
-    &:hover{
-      transform: rotateY(180deg);
-    }
+    
   }
   &.opened .back{//zmienic na klase
-    background-color: #777;
+    background-color: rgb(212, 212, 212);
     opacity: 1;
     z-index: 11;
     transform: rotateY(0);
   }
+  &.opened .front{
+    transform: rotateY(180deg)
+  }
   &.matched .back{
     filter: grayscale(1);
-
   }
 
   .back{  
@@ -69,15 +70,7 @@ code {
     transform: rotateY(180deg);
     line-height: 110px;
     transition: all .8s;
-    animation: selected .3s 0s ease 1;
     opacity: 0;
-
-    &.opened{//zmienic na klase
-      background-color: #777;
-      opacity: 1;
-      z-index: 1;
-      transform: rotateY(0);
-    }
 
           img{
             position:absolute;
@@ -85,6 +78,13 @@ code {
             top: 50%;
             left: 50%;
             transform: translate(-50%,-50%);
+            backface-visibility: hidden;
+            
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
           }
        
   }
