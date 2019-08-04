@@ -47,7 +47,7 @@ class App extends React.Component {
     this.setState({ finitializedFrameworks: finitializedFrameworks });
   }
   wonGame() {
-    if (this.state.matchedFrameworks === 1) {
+    if (this.state.matchedFrameworks === 10) {
       alert("Congratulations! You just won the game");
     }
   }
