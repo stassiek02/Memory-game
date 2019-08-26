@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/Memory-game/static/css/main.4bc7d001.chunk.css",
+    "main.js": "/Memory-game/static/js/main.74847453.chunk.js",
+    "main.js.map": "/Memory-game/static/js/main.74847453.chunk.js.map",
+    "runtime~main.js": "/Memory-game/static/js/runtime~main.679001c3.js",
+    "runtime~main.js.map": "/Memory-game/static/js/runtime~main.679001c3.js.map",
+    "static/js/2.443ff43c.chunk.js": "/Memory-game/static/js/2.443ff43c.chunk.js",
+    "static/js/2.443ff43c.chunk.js.map": "/Memory-game/static/js/2.443ff43c.chunk.js.map",
+    "index.html": "/Memory-game/index.html",
+    "precache-manifest.14881f63d8a8ffe5816f72a15e0fdae6.js": "/Memory-game/precache-manifest.14881f63d8a8ffe5816f72a15e0fdae6.js",
+    "service-worker.js": "/Memory-game/service-worker.js",
+    "static/css/main.4bc7d001.chunk.css.map": "/Memory-game/static/css/main.4bc7d001.chunk.css.map",
+    "static/media/angular2.svg": "/Memory-game/static/media/angular2.e224f5ed.svg",
+    "static/media/babel.svg": "/Memory-game/static/media/babel.d255e75f.svg",
+    "static/media/bower.svg": "/Memory-game/static/media/bower.2aff8e66.svg",
+    "static/media/browserify.svg": "/Memory-game/static/media/browserify.c18a4d86.svg",
+    "static/media/ember.svg": "/Memory-game/static/media/ember.ad11f1d9.svg",
+    "static/media/grunt.svg": "/Memory-game/static/media/grunt.7835f1c5.svg",
+    "static/media/gulp.svg": "/Memory-game/static/media/gulp.771551b9.svg",
+    "static/media/ionic.svg": "/Memory-game/static/media/ionic.83ff7531.svg",
+    "static/media/meteor.svg": "/Memory-game/static/media/meteor.2a05c00f.svg",
+    "static/media/nodejs.svg": "/Memory-game/static/media/nodejs.94cafb0d.svg",
+    "static/media/npm.svg": "/Memory-game/static/media/npm.4ffaf293.svg",
+    "static/media/react.svg": "/Memory-game/static/media/react.9a28da9f.svg",
+    "static/media/vue.svg": "/Memory-game/static/media/vue.22efb7c2.svg",
+    "static/media/yarn.svg": "/Memory-game/static/media/yarn.878ab384.svg",
+    "static/media/yeoman.svg": "/Memory-game/static/media/yeoman.55e964d3.svg"
+  }
+}
