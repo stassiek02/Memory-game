@@ -1,39 +1,54 @@
 body {
   margin: 0;
-  font-family:"Roboto", "Segoe UI", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Roboto", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-.wrapper{
-  max-width:1200px;
+.container{
+  margin-top: 100px;
+}
+.wrapper {
+  max-width: 1200px;
   margin: 10% auto;
-  align-content: center;	
+  align-content: center;
   display: grid;
   width: 80%;
-  grid-template-columns: auto auto auto auto;// repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: auto auto auto auto; // repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 1rem;
-  
-  
-  
 }
-.heading{
+.buttons__wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
+  button{
+    border: none;
+    width: 80px;
+    height: 30px;
+    margin: 0 10px;
+    background-color: #ffbe76;
+    transition: .2s opacity;
+    &:hover{
+      
+      opacity: .8;
+    }
+  }
+}
+.heading {
   position: relative;
   text-align: center;
   display: block;
   font-weight: 400;
-  font-family: 'Roboto';
-
+  font-family: "Roboto";
 }
 @media (max-width: 768px) {
-  .wrapper{
-    grid-template-columns:auto auto auto ;
+  .wrapper {
+    grid-template-columns: auto auto auto;
   }
 }
-.card{
- // background: #EDE7F6;
+.card {
+  // background: #EDE7F6;
   border-radius: 3px;
   height: 200px;
   position: relative;
@@ -41,9 +56,8 @@ body {
   perspective: 150rem;
   -moz-perspective: 150rem;
   z-index: 9999;
-  
 
-  .front{
+  .front {
     background: #ffbe76;
     position: absolute;
     top: 0;
@@ -55,73 +69,64 @@ body {
     line-height: 12px;
     cursor: pointer;
     color: #535c68;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     transition: 0.8s all;
-
-    
   }
-  &.opened .back{//zmienic na klase
+  &.opened .back {
+    //zmienic na klase
     background-color: rgb(212, 212, 212);
     opacity: 1;
     z-index: 11;
     transform: rotateY(0);
   }
-  &.opened .front{
-    transform: rotateY(180deg)
+  &.opened .front {
+    transform: rotateY(180deg);
   }
-  &.matched .back{
+  &.matched .back {
     filter: grayscale(1);
   }
 
-  .back{  
+  .back {
     position: absolute;
     width: 100%;
     height: 100%;
     transform: rotateY(180deg);
     line-height: 110px;
-    transition: all .8s;
+    transition: all 0.8s;
     opacity: 0;
 
-          img{
-            position:absolute;
-            width: 80px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            backface-visibility: hidden;
-            
-            user-select: none;
-            -moz-user-select: none;
-            -webkit-user-drag: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-          }
-       
+    img {
+      position: absolute;
+      width: 80px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      backface-visibility: hidden;
+
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-drag: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
   }
 }
 @keyframes selected {
   0% {
-    opacity:.2;
+    opacity: 0.2;
   }
   30% {
-    opacity:.5;
+    opacity: 0.5;
   }
   50% {
-    opacity:.9;
+    opacity: 0.9;
   }
   70% {
-    opacity:.2;
+    opacity: 0.2;
   }
   100% {
-    opacity:.3;
+    opacity: 0.3;
   }
 }
-
-
-
-
-
-
-

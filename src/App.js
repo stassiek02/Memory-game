@@ -16,23 +16,25 @@ const frameworks = [
 ];
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    frameworks: frameworks,
+    finitializedFrameworks: [],
+    openedFrameworks: [],
+    matchedFrameworks: 0,
+    lvlSelected: null
+  };
 
-    this.state = {
-      frameworks: frameworks,
-      finitializedFrameworks: [],
-      openedFrameworks: [],
-      matchedFrameworks: 0
-    };
-  }
   componentWillMount() {
     this.start();
   }
-  start() {
-    let finitializedFrameworks = [],
-      randomizedFrameworks = [];
-    randomizedFrameworks = this.state.frameworks.concat(this.state.frameworks);
+  start(lvl) {
+    this.setState({
+      lvlSelected: lvl
+    });
+    let finitializedFrameworks = [];
+    let selectedFrameworks = frameworks.slice(0, lvl);
+    let randomizedFrameworks = [];
+    randomizedFrameworks = selectedFrameworks.concat(selectedFrameworks);
     randomizedFrameworks = this.shuffle(randomizedFrameworks);
     randomizedFrameworks.map((name, index) => {
       finitializedFrameworks.push({
@@ -47,7 +49,9 @@ class App extends React.Component {
     this.setState({ finitializedFrameworks: finitializedFrameworks });
   }
   wonGame() {
-    if (this.state.matchedFrameworks === 10) {
+    const { matchedFrameworks, lvlSelected } = this.state;
+    console.log(matchedFrameworks);
+    if (matchedFrameworks === lvlSelected) {
       alert("Congratulations! You just won the game");
     }
   }
@@ -130,33 +134,43 @@ class App extends React.Component {
 
   render() {
     const finitializedFrameworks = this.state.finitializedFrameworks;
+    const { lvlSelected } = this.state;
     return (
       <>
+        <div className="container">
         <h1 className="heading">Play with me</h1>
+        <p className="heading">{lvlSelected ? "I wish you luck" :"Choose your level"}</p>
+       
+          {lvlSelected ? <div className="wrapper">{(
+            finitializedFrameworks.map((framework, index) => {
 
-        <div className="wrapper">
-          {finitializedFrameworks.map((framework, index) => {
-            return (
-              <Card
-                framework={framework.name}
-                onClick={() => this.handleClick(framework.name, index)}
-                complete={framework.complete}
-                close={framework.close}
-              />
-            );
-          })}
-        </div>
+              return (
+                
+                <Card
+                  framework={framework.name}
+                  onClick={() => this.handleClick(framework.name, index)}
+                  complete={framework.complete}
+                  close={framework.close}
+                />
+                 
+              );
+            })
+          )}</div> : (
+            <div className="buttons__wrapper">
+              
+              <button onClick={() => this.start(4)}>Easy</button>
+              <button onClick={() => this.start(8)}>Medium</button>
+              <button onClick={() => this.start(10)}>Hard</button>
+            </div>
+          )}
+       </div>
       </>
     );
   }
 }
 
 class Card extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
+  state = {};
   clicked(framework) {
     this.props.onClick(framework);
   }
