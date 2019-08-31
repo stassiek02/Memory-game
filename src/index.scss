@@ -13,9 +13,13 @@ body {
   margin: 10% auto;
   align-content: center;
   display: grid;
-  width: 80%;
-  grid-template-columns: auto auto auto auto; // repeat(auto-fill, minmax(200px, 1fr));
+  width: 100%;
+  justify-content: center;	
+  grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
   grid-gap: 1rem;
+  @media(min-width:800px){
+    grid-template-columns: repeat(4,minmax(100px,200px));
+  }
 }
 .buttons__wrapper{
   display: flex;
@@ -42,17 +46,14 @@ body {
   font-weight: 400;
   font-family: "Roboto";
 }
-@media (max-width: 768px) {
-  .wrapper {
-    grid-template-columns: auto auto auto;
-  }
-}
+
+
 .card {
   // background: #EDE7F6;
-  border-radius: 3px;
-  height: 200px;
+  border-radius: 4px;
+  height: 150px;
   position: relative;
-
+  overflow: hidden;
   perspective: 150rem;
   -moz-perspective: 150rem;
   z-index: 9999;
@@ -112,6 +113,9 @@ body {
       -ms-user-select: none;
     }
   }
+  @media (max-width:450px) {
+  }
+  
 }
 @keyframes selected {
   0% {
